@@ -1,6 +1,20 @@
 GHIDRA_HOME=../ghidra/ghidra/
 GHIDRA_DECOMPILER=$(GHIDRA_HOME)/Ghidra/Features/Decompiler/src/decompile/cpp
 
+ifeq ($(shell uname),FreeBSD)
+CFLAGS+=-DHOST_ENDIAN=1
+CFLAGS+=-Dint1=char
+CFLAGS+=-Dint2=short
+CFLAGS+=-Duint1=unsigned" char"
+CFLAGS+=-Duint2=unsigned" short"
+CFLAGS+=-Dint4=int
+CFLAGS+=-Duint4=unsigned" long long"
+CFLAGS+=-Dint8="long long"
+CFLAGS+=-Duint8="unsigned long long"
+CFLAGS+=-Duintm="unsigned long long"
+CFLAGS+=-Duintp="unsigned long long"
+endif
+
 G_DECOMPILER=space.cc float.cc address.cc pcoderaw.cc
 G_DECOMPILER+=translate.cc opcodes.cc globalcontext.cc
 G_DECOMPILER+=capability.cc architecture.cc options.cc graph.cc
