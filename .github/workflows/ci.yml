@@ -34,7 +34,7 @@ jobs:
     - name: Installing Radare2
       run: sudo dpkg -i radare2/sys/debian/*/*.deb
     - name: Building r2ghidra
-      run: git clone https://github.com/radareorg/r2ghidra && cd r2ghidra ; git submodule update --init ; ./configure ; make -j4 ; make user-install
+      run: git clone https://github.com/radareorg/r2ghidra && cd r2ghidra ; ./configure ; make -j4 ; make user-install
     - name: Building r2ghidra Package
       run: make -C scripts/debian
     - name: Testing r2ghidra
