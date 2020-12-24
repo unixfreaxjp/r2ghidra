@@ -32,7 +32,7 @@ jobs:
     - name: Building Debian packages
       run: cd radare2 ; sys/debian.sh ; cd ..
     - name: Installing Radare2
-      run: dpkg -i radare2/sys/debian/*/*.deb
+      run: sudo dpkg -i radare2/sys/debian/*/*.deb
     - name: Building r2ghidra
       run: ./configure ; make -j4 ; make user-install
     - name: Building r2ghidra Package
