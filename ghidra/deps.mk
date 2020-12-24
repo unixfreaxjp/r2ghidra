@@ -67,6 +67,7 @@ grammars:
 	$(MAKE) $(GHIDRA_DECOMPILER)/xml.cc
 	$(MAKE) $(GHIDRA_DECOMPILER)/pcodeparse.cc
 	$(MAKE) $(GHIDRA_DECOMPILER)/slghparse.cc
+	$(MAKE) $(GHIDRA_DECOMPILER)/slghscan.cc
 
 $(GHIDRA_DECOMPILER)/grammar.cc: $(GHIDRA_DECOMPILER)/grammar.y
 	$(BISON) -p grammar -o $(GHIDRA_DECOMPILER)/grammar.cc $(GHIDRA_DECOMPILER)/grammar.y
@@ -95,7 +96,7 @@ $(GHIDRA_DECOMPILER)/slghparse.cc: $(GHIDRA_DECOMPILER)/slghparse.y
 
 $(GHIDRA_DECOMPILER)/slghscan.cc: $(GHIDRA_DECOMPILER)/slghscan.l $(GHIDRA_DECOMPILER)/slghparse.cc
 	$(FLEX) --header-file=$(GHIDRA_DECOMPILER)/slghscan.tab.hh -o $(GHIDRA_DECOMPILER)/slghscan.cc $(GHIDRA_DECOMPILER)/slghscan.l
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(GHIDRA_DECOMPILER)/slghscan.o -c $(GHIDRA_DECOMPILER)/slghscan.cc
+	# $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(GHIDRA_DECOMPILER)/slghscan.o -c $(GHIDRA_DECOMPILER)/slghscan.cc
 
 GHIDRA_SRCS=$(addprefix $(GHIDRA_DECOMPILER)/,$(G_DECOMPILER))
 GHIDRA_OBJS+=$(subst .cc,.o,$(GHIDRA_SRCS))
