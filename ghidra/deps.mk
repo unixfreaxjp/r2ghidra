@@ -56,6 +56,7 @@ G_DECOMPILER+= xml.cc ## bison
 G_DECOMPILER+= pcodeparse.cc ## bison
 G_DECOMPILER+= ruleparse.cc ## bison
 G_DECOMPILER+= slghparse.cc ## bison
+G_DECOMPILER+= slghscan.cc ## bison
 G_DECOMPILER+= grammar.cc ## bison
 # G_DECOMPILER+= slghparse.cc ## bison
 # G_DECOMPILER+= grammar.cc ## bison
