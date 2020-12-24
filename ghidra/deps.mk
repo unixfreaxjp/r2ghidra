@@ -58,6 +58,13 @@ G_DECOMPILER+= pcodeparse.cc ## bison
 # G_DECOMPILER+= grammar.cc ## bison
 # G_DECOMPILER+= ruleparse.cc ## bison
 
+grammars:
+	$(MAKE) $(GHIDRA_DECOMPILER)/grammar.cc
+	$(MAKE) $(GHIDRA_DECOMPILER)/ruleparser.cc
+	$(MAKE) $(GHIDRA_DECOMPILER)/xml.cc
+	$(MAKE) $(GHIDRA_DECOMPILER)/pcodeparse.cc
+	$(MAKE) $(GHIDRA_DECOMPILER)/slghparse.cc
+
 $(GHIDRA_DECOMPILER)/grammar.cc: $(GHIDRA_DECOMPILER)/grammar.y
 	$(BISON) -p grammar -o $(GHIDRA_DECOMPILER)/grammar.cc $(GHIDRA_DECOMPILER)/grammar.y
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(GHIDRA_DECOMPILER)/grammar.o -c $(GHIDRA_DECOMPILER)/grammar.cc
