@@ -28,11 +28,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Cloning Repo
-      run: git clone https://github.com/radareorg/radare2; cd radare2 ; sys/debian.sh ; cd ..
+      run: git clone https://github.com/radareorg/radare2
     - name: Building Debian packages
-      run: sys/debian.sh
+      run: cd radare2 ; sys/debian.sh ; cd ..
     - name: Installing Radare2
-      run: dpkg -i sys/debian/*/*.deb
+      run: dpkg -i radare2/sys/debian/*/*.deb
     - name: Building r2ghidra
       run: ./configure ; make -j4 ; make user-install
     - name: Building r2ghidra Package
