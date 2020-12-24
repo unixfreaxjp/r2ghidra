@@ -79,9 +79,8 @@ $(GHIDRA_DECOMPILER)/slghparse.cc: $(GHIDRA_DECOMPILER)/slghparse.y
 	$(BISON) -d -o $(GHIDRA_DECOMPILER)/slghparse.tab.hh $(GHIDRA_DECOMPILER)/slghparse.y
 	$(BISON) -o $(GHIDRA_DECOMPILER)/slghparse.cc $(GHIDRA_DECOMPILER)/slghparse.y
 
-.PHONY: $(GHIDRA_DECOMPILER)/slghparse.cc
-.PHONY: $(GHIDRA_DECOMPILER)/slghscan.cc
-
+# .PHONY: $(GHIDRA_DECOMPILER)/slghparse.cc
+# .PHONY: $(GHIDRA_DECOMPILER)/slghscan.cc
 
 $(GHIDRA_DECOMPILER)/slghscan.cc: $(GHIDRA_DECOMPILER)/slghscan.l $(GHIDRA_DECOMPILER)/slghparse.cc
 	$(FLEX) --header-file=$(GHIDRA_DECOMPILER)/slghscan.tab.hh -o $(GHIDRA_DECOMPILER)/slghscan.cc $(GHIDRA_DECOMPILER)/slghscan.l
