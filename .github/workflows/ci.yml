@@ -34,12 +34,12 @@ jobs:
     - name: Installing Radare2
       run: sudo dpkg -i radare2/sys/debian/*/*.deb
     - name: Building r2ghidra
-      run: ./configure ; make -j4 ; make user-install
+      run: git clone https://github.com/radareorg/r2ghidra && cd r2ghidra ; ./configure ; make -j4 ; make user-install
     - name: Building r2ghidra Package
-      run: cd scripts/debian ; make
+      run: make -C scripts/debian
     - name: Testing r2ghidra
       run: r2 -qc 'af;pdg' /bin/ls
     - name: Pub
       uses: actions/upload-artifact@v2
       with:
-        path: radare2/sys/debian/*/*.deb scripts/debian/*.deb
+        path: radare2/sys/debian/*/*.deb r2ghidra/scripts/debian/*.deb
