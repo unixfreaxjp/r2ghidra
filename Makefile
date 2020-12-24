@@ -2,7 +2,8 @@
 DESTDIR?=
 
 ifeq ($(shell test -f config.mk && echo $$?),0)
-all: ghidra/ghidra/Ghidra ghidra-processors.txt
+all: ghidra-processors.txt
+	$(MAKE) ghidra/ghidra/Ghidra
 	$(MAKE) -C src grammars GHIDRA_HOME=$(shell pwd)/ghidra/ghidra/
 	$(MAKE) -C src
 	$(MAKE) -C src sleigh-build
