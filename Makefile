@@ -3,7 +3,7 @@ DESTDIR?=
 
 ifeq ($(shell test -f config.mk && echo $$?),0)
 all: ghidra/ghidra/Ghidra ghidra-processors.txt
-	$(MAKE) -C src grammars
+	$(MAKE) -C src grammars GHIDRA_HOME=$(shell pwd)/ghidra/ghidra/
 	$(MAKE) -C src
 	$(MAKE) -C src sleigh-build
 else
@@ -53,8 +53,8 @@ user-uninstall:
 	rm -f $(DESTDIR)/$(BINDIR)/sleighc
 
 ghidra/ghidra/Ghidra:
-	$(MAKE) -C src grammars
 	$(MAKE) -C ghidra
+	$(MAKE) -C src grammars GHIDRA_HOME=$(shell pwd)/ghidra/ghidra/
 
 mrproper: clean
 	rm -rf ghidra/ghidra
